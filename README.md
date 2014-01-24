@@ -16,7 +16,7 @@ If you're unfamiliar with CocoaPods you can check out this tutorial [here](http:
 1. In Terminal navigate to the root of your project.
 2. Run 'touch Podfile' to create the Podfile.
 3. Open the Podfile using 'open -e Podfile'
-4. Add the pod `SFRoundProgressCounterView` to your [Podfile](https://github.com/CocoaPods/CocoaPods/wiki/A-Podfile).
+4. Add the pod `SFGaugeView` to your [Podfile](https://github.com/CocoaPods/CocoaPods/wiki/A-Podfile).
 
         platform :ios, '7.0'
         pod 'SFGaugeView'
