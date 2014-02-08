@@ -19,4 +19,10 @@
 
 - (NSInteger) currentLevel;
 
+/**
+ * @Optional
+ * only call this method if you programmatically added the SFGaugeView - otherwise it's automatically called when the view is instanciated from the NIB!
+ */
+- (void) setup;
+
 @end
