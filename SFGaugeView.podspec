@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name 			= 'SFGaugeView'
-  spec.version 			= '0.0.1'
+  spec.version 			= '0.0.2'
   spec.summary			= 'Provides a gauge control for ios'
   spec.platform 		= :ios
   spec.license			= 'MIT'
@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   spec.authors			= 'Thomas Winkler'
   spec.homepage			= 'https://github.com/simpliflow/SFGaugeView'
   spec.source_files 		= 'SFGaugeView/*.{h,m}'  
-  spec.source			= { :git => 'https://github.com/simpliflow/SFGaugeView.git', :tag => 'v0.0.1' }
+  spec.source			= { :git => 'https://github.com/simpliflow/SFGaugeView.git', :tag => 'v0.0.2' }
   spec.framework  = 'UIKit'
   spec.requires_arc = true
 
