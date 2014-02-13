@@ -29,13 +29,14 @@ Usage
 1. Either create SFGaugeView by dragging UIView from storyboard and change implementing class or create it programmatically
 2. Create an outlet (if create via storyboard)
 3. Set up parameters
+
         maxLevel = The maximum level of gauge control (int value)
         needleColor = Color of needle
         bgColor = Background Color of gauge control
         hideLevel = If set to YES the current level is hidden
         minImage = An image for min level (see screenshot)
         maxImage = An image for max level (see screenshot)
-	currentLevel = Sets the current Level
+        currentLevel = Sets the current Level
 
 4. GaugeControl interaction
         currentLevel = Returns the current level
