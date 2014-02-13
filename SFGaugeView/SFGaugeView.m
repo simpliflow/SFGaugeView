@@ -22,11 +22,19 @@ static const CGFloat CUTOFF = 0.5;
 
 #pragma mark init stuff
 
+- (id) init
+{
+    self = [super init];
+    [self setup];
+    
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // intentionally left blank
+        [self setup];
     }
     return self;
 }
