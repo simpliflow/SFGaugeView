@@ -17,6 +17,6 @@
 @property (nonatomic) NSString *minImage;
 @property (nonatomic) NSString *maxImage;
 
-- (NSInteger) currentLevel;
+@property (nonatomic) NSInteger currentLevel;
 
 @end

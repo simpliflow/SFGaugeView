@@ -35,6 +35,7 @@ Usage
         hideLevel = If set to YES the current level is hidden
         minImage = An image for min level (see screenshot)
         maxImage = An image for max level (see screenshot)
+	currentLevel = Sets the current Level
 
 4. GaugeControl interaction
         currentLevel = Returns the current level

@@ -246,6 +246,22 @@ static const CGFloat CUTOFF = 0.5;
     return level;
 }
 
+- (void) setCurrentLevel:(NSInteger)currentLevel
+{
+    if (currentLevel >= 0 && currentLevel <= self.maxlevel) {
+        
+        CGFloat range = M_PI - (CUTOFF * 2);
+        if (currentLevel != self.maxlevel/2) {
+            self.currentRadian = (currentLevel * range)/self.maxlevel - (range/2);
+        } else {
+            self.currentRadian = 0.f;
+        }
+        
+//        NSLog(@"Current Radian is %f", self.currentRadian);
+        [self setNeedsDisplay];
+    }
+}
+
 #pragma mark custom getter/setter
 
 - (CGPoint)center
