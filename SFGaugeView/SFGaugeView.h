@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class SFGaugeView;
+
+@protocol SFGaugeViewDelegate<NSObject>
+
+@required
+- (void) sfGaugeView:(SFGaugeView*) gaugeView didChangeLevel:(NSInteger) level;
+@end
+
 @interface SFGaugeView : UIView
 
 @property (nonatomic) NSUInteger maxlevel;
@@ -18,5 +26,7 @@
 @property (nonatomic) NSString *maxImage;
 
 @property (nonatomic) NSInteger currentLevel;
+
+@property (nonatomic, weak) id<SFGaugeViewDelegate> delegate;
 
 @end

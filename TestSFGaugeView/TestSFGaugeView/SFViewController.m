@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     self.topTachometer.bgColor = [UIColor colorWithRed:0/255.0 green:124/255.0 blue:205/255.0 alpha:1];
     self.topTachometer.needleColor = [UIColor colorWithRed:0/255.0 green:39/255.0 blue:64/255.0 alpha:1];
@@ -33,6 +34,7 @@
     self.middleTachometer.minImage = @"minImage";
     self.middleTachometer.maxImage = @"maxImage";
     self.middleTachometer.currentLevel = 3;
+    self.middleTachometer.delegate = self;
 
     self.leftTachometer.maxlevel = 8;
     self.leftTachometer.bgColor = [UIColor colorWithRed:249/255.0 green:203/255.0 blue:0/255.0 alpha:1];
@@ -41,10 +43,9 @@
     
 }
 
-- (void)didReceiveMemoryWarning
+- (void) sfGaugeView:(SFGaugeView *)gaugeView didChangeLevel:(NSInteger)level
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSLog(@"Value of middle tachometer changed to %ld", (long)level);
 }
 
 @end

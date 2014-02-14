@@ -13,6 +13,7 @@
 @property(nonatomic) CGFloat needleRadius;
 @property(nonatomic) CGFloat bgRadius;
 @property(nonatomic) CGFloat currentRadian;
+@property(nonatomic) NSInteger oldLevel;
 
 @end
 
@@ -202,6 +203,13 @@ static const CGFloat CUTOFF = 0.5;
         return self.currentRadian;
     }
     
+    CGFloat threshold = self.bounds.size.width * 0.2;
+    if (pos.x <= threshold) {
+        return -(M_PI_2 - CUTOFF);
+    } else if (pos.x >= (self.bounds.size.width - threshold)) {
+        return (M_PI_2 - CUTOFF);
+    }
+    
     // calculate distance between pos and center
     CGFloat p12 = [self calculateDistanceFrom:pos to:[self center]];
     
@@ -251,12 +259,19 @@ static const CGFloat CUTOFF = 0.5;
     }
     
 //    NSLog(@"Current Level is %lu", (unsigned long)level);
+    if (self.oldLevel != level && self.delegate && [self.delegate respondsToSelector:@selector(sfGaugeView:didChangeLevel:)]) {
+        [self.delegate sfGaugeView:self didChangeLevel:level];
+    }
+    
+    self.oldLevel = level;
     return level;
 }
 
 - (void) setCurrentLevel:(NSInteger)currentLevel
 {
     if (currentLevel >= 0 && currentLevel <= self.maxlevel) {
+ 
+        self.oldLevel = currentLevel;
         
         CGFloat range = M_PI - (CUTOFF * 2);
         if (currentLevel != self.maxlevel/2) {

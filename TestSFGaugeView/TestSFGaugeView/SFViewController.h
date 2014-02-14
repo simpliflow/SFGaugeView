@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SFGaugeView.h"
 
-@interface SFViewController : UIViewController
+@interface SFViewController : UIViewController<SFGaugeViewDelegate>
 
 @end
