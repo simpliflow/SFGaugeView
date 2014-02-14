@@ -41,6 +41,10 @@ Usage
 4. GaugeControl interaction
         currentLevel = Returns the current level
 
+Delegate Method
+---------
+
+        - (void) sfGaugeView:(SFGaugeView*) gaugeView didChangeLevel:(NSInteger) level;
 
 Author(s)
 -------
