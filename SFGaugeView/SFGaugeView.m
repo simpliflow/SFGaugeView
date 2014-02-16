@@ -134,9 +134,14 @@ static const CGFloat CUTOFF = 0.5;
     CGFloat distance = [self bgRadius] + ([self bgRadius] * 0.1);
     CGFloat starttime = 0;
     CGFloat endtime = M_PI;
+    CGFloat topSpace = (distance * 0.1)/6;
     
     CGPoint center = [self center];
+
     CGPoint topPoint = CGPointMake([self center].x, [self center].y - distance);
+    CGPoint topPoint1 = CGPointMake([self center].x - topSpace, [self center].y - distance + (distance * 0.1));
+    CGPoint topPoint2 = CGPointMake([self center].x + topSpace, [self center].y - distance + (distance * 0.1));
+    
     CGPoint finishPoint = CGPointMake([self center].x + self.needleRadius, [self center].y);
     
     UIBezierPath *needlePath = [UIBezierPath bezierPath]; //empty path
@@ -146,8 +151,12 @@ static const CGFloat CUTOFF = 0.5;
     next.y = center.y + self.needleRadius * sin(starttime);
     [needlePath addLineToPoint:next]; //go one end of arc
     [needlePath addArcWithCenter:center radius:self.needleRadius startAngle:starttime endAngle:endtime clockwise:YES]; //add the arc
-    [needlePath addLineToPoint:topPoint]; //back to center
-    [needlePath addLineToPoint:finishPoint]; //back to center
+    
+    [needlePath addLineToPoint:topPoint1];
+    
+    [needlePath addQuadCurveToPoint:topPoint2 controlPoint:topPoint];
+    
+    [needlePath addLineToPoint:finishPoint];
     
     CGAffineTransform translate = CGAffineTransformMakeTranslation(-1 * (self.bounds.origin.x + [self center].x), -1 * (self.bounds.origin.y + [self center].y));
     [needlePath applyTransform:translate];

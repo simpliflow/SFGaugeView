@@ -1,0 +1,14 @@
+PODS:
+  - SFGaugeView (0.0.1)
+
+DEPENDENCIES:
+  - SFGaugeView (from `../`)
+
+EXTERNAL SOURCES:
+  SFGaugeView:
+    :path: ../
+
+SPEC CHECKSUMS:
+  SFGaugeView: ca97f7996209d7e45d0c2361f07db2e376c164c5
+
+COCOAPODS: 0.29.0

@@ -8,6 +8,7 @@
 
 #import "SFViewController.h"
 #import "SFGaugeView.h"
+#import "SFViewXIB.h"
 
 
 @interface SFViewController ()
@@ -24,6 +25,19 @@
 {
     
     [super viewDidLoad];
+    
+    // Load from XIB/NIB example:
+//    SFViewXIB* view = [[[NSBundle mainBundle] loadNibNamed:@"SFViewXIB" owner:nil options:nil] lastObject];
+//    view.graphSlider.bgColor     = [UIColor colorWithRed:0/255.0 green:124/255.0 blue:205/255.0 alpha:1];
+//    view.graphSlider.needleColor = [UIColor colorWithRed:0/255.0 green:39/255.0 blue:64/255.0 alpha:1];
+//    view.graphSlider.hideLevel   = YES;
+//    
+//    view.graphSlider.maxlevel = 115; // initial
+//    view.graphSlider.currentLevel = 0;
+//    
+//    view.frame = self.view.frame;
+//    [self.view addSubview:view];
+    
     self.topTachometer.bgColor = [UIColor colorWithRed:0/255.0 green:124/255.0 blue:205/255.0 alpha:1];
     self.topTachometer.needleColor = [UIColor colorWithRed:0/255.0 green:39/255.0 blue:64/255.0 alpha:1];
     self.topTachometer.hideLevel = YES;
@@ -39,7 +53,6 @@
     self.leftTachometer.maxlevel = 8;
     self.leftTachometer.bgColor = [UIColor colorWithRed:249/255.0 green:203/255.0 blue:0/255.0 alpha:1];
     self.leftTachometer.needleColor = [UIColor colorWithRed:247/255.0 green:164/255.0 blue:2/255.0 alpha:1];
-
     
 }
 

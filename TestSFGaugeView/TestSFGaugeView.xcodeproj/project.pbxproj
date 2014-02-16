@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		06B68F62380347A692F3D831 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE04435D1E643C38E4CC999 /* libPods.a */; };
+		5F6636B818B0ADFB00F54090 /* SFViewXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6636B718B0ADFB00F54090 /* SFViewXIB.xib */; };
+		5F6636BB18B0AE3F00F54090 /* SFViewXIB.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6636BA18B0AE3F00F54090 /* SFViewXIB.m */; };
 		5FF87D4B18914D5E00A57B15 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF87D4A18914D5E00A57B15 /* Foundation.framework */; };
 		5FF87D4D18914D5E00A57B15 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF87D4C18914D5E00A57B15 /* CoreGraphics.framework */; };
 		5FF87D4F18914D5E00A57B15 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF87D4E18914D5E00A57B15 /* UIKit.framework */; };
@@ -35,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F6636B718B0ADFB00F54090 /* SFViewXIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFViewXIB.xib; sourceTree = "<group>"; };
+		5F6636B918B0AE3F00F54090 /* SFViewXIB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFViewXIB.h; sourceTree = "<group>"; };
+		5F6636BA18B0AE3F00F54090 /* SFViewXIB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFViewXIB.m; sourceTree = "<group>"; };
 		5FF87D4718914D5E00A57B15 /* TestSFGaugeView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestSFGaugeView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FF87D4A18914D5E00A57B15 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5FF87D4C18914D5E00A57B15 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
@@ -125,6 +130,9 @@
 				5FF87D5C18914D5E00A57B15 /* Main.storyboard */,
 				5FF87D6218914D5E00A57B15 /* Images.xcassets */,
 				5FF87D5118914D5E00A57B15 /* Supporting Files */,
+				5F6636B718B0ADFB00F54090 /* SFViewXIB.xib */,
+				5F6636B918B0AE3F00F54090 /* SFViewXIB.h */,
+				5F6636BA18B0AE3F00F54090 /* SFViewXIB.m */,
 			);
 			path = TestSFGaugeView;
 			sourceTree = "<group>";
@@ -238,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FF87D6318914D5E00A57B15 /* Images.xcassets in Resources */,
+				5F6636B818B0ADFB00F54090 /* SFViewXIB.xib in Resources */,
 				5FF87D5518914D5E00A57B15 /* InfoPlist.strings in Resources */,
 				5FF87D5E18914D5E00A57B15 /* Main.storyboard in Resources */,
 			);
@@ -292,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FFDE76C18914E900079917F /* SFViewController.m in Sources */,
+				5F6636BB18B0AE3F00F54090 /* SFViewXIB.m in Sources */,
 				5FF87D5718914D5E00A57B15 /* main.m in Sources */,
 				5FF87D5B18914D5E00A57B15 /* SFAppDelegate.m in Sources */,
 			);
