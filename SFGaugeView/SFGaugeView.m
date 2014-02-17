@@ -113,12 +113,16 @@ static const CGFloat CUTOFF = 0.5;
     CGFloat starttime = M_PI + CUTOFF;
     CGFloat endtime = 2 * M_PI - CUTOFF;
     
-    UIBezierPath *bgPath = [UIBezierPath bezierPath];
-    [bgPath moveToPoint:[self center]];
-    [bgPath addArcWithCenter:[self center] radius:self.bgRadius startAngle:starttime endAngle: (3 * M_PI_2) + self.currentRadian clockwise:YES];
-    [bgPath addLineToPoint:[self center]];
-    [[self bgColor] set];
-    [bgPath fill];
+    CGFloat bgEndAngle = (3 * M_PI_2) + self.currentRadian;
+    
+    if (bgEndAngle > starttime) {
+        UIBezierPath *bgPath = [UIBezierPath bezierPath];
+        [bgPath moveToPoint:[self center]];
+        [bgPath addArcWithCenter:[self center] radius:self.bgRadius startAngle:starttime endAngle: (3 * M_PI_2) + self.currentRadian clockwise:YES];
+        [bgPath addLineToPoint:[self center]];
+        [[self bgColor] set];
+        [bgPath fill];
+    }
     
     UIBezierPath *bgPath2 = [UIBezierPath bezierPath];
     [bgPath2 moveToPoint:[self center]];
@@ -234,7 +238,7 @@ static const CGFloat CUTOFF = 0.5;
     
     if (gesture.state == UIGestureRecognizerStateChanged)
     {
-        //        NSLog (@"[%f,%f]",currentPosition.x, currentPosition.y);
+        //                NSLog (@"[%f,%f]",currentPosition.x, currentPosition.y);
         self.currentRadian = [self calculateRadian:currentPosition];
         [self setNeedsDisplay];
         [self currentLevel];
@@ -282,7 +286,7 @@ static const CGFloat CUTOFF = 0.5;
         return self.currentRadian;
     }
     
-    //    NSLog(@"Calculated Angle: %f", result);
+//    NSLog(@"Calculated Angle: %f", result);
     
     return result;
 }
