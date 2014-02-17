@@ -24,6 +24,7 @@
 @property (nonatomic) BOOL hideLevel;
 @property (nonatomic) NSString *minImage;
 @property (nonatomic) NSString *maxImage;
+@property (nonatomic) BOOL autoAdjustImageColors;
 
 @property (nonatomic) NSInteger currentLevel;
 

@@ -41,6 +41,10 @@
     self.topTachometer.bgColor = [UIColor colorWithRed:0/255.0 green:124/255.0 blue:205/255.0 alpha:1];
     self.topTachometer.needleColor = [UIColor colorWithRed:0/255.0 green:39/255.0 blue:64/255.0 alpha:1];
     self.topTachometer.hideLevel = YES;
+    self.topTachometer.minImage = @"minImage";
+    self.topTachometer.maxImage = @"maxImage";
+    self.topTachometer.adjustImageColors = YES;
+    
 
     self.middleTachometer.bgColor = [UIColor colorWithRed:102/255.0 green:175/255.0 blue:102/255.0 alpha:1];
     self.middleTachometer.needleColor = [UIColor colorWithRed:27/255.0 green:103/255.0 blue:107/255.0 alpha:1];

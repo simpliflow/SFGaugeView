@@ -67,12 +67,21 @@ static const CGFloat CUTOFF = 0.5;
 - (void) drawImageLabels
 {
     if (self.minImage && self.maxImage) {
-        UIImage *badImg = [UIImage imageNamed: self.minImage];
+        
+        UIImage *badImg;
+        UIImage *goodImg;
+        
+        if (self.autoAdjustImageColors) {
+            badImg = [self imageNamed:self.minImage withColor:self.bgColor drawAsOverlay:NO];
+            goodImg = [self imageNamed:self.maxImage withColor:self.bgColor drawAsOverlay:NO];
+        } else {
+            badImg = [UIImage imageNamed:self.minImage];
+            goodImg = [UIImage imageNamed: self.maxImage];
+        }
+        
         CGFloat scaleFactor = (self.bounds.size.width / badImg.size.width)/6 ;
         
         [badImg drawInRect:CGRectMake([self centerX] - self.bgRadius, [self centerY] - badImg.size.height * scaleFactor, badImg.size.width * scaleFactor, badImg.size.height * scaleFactor)];
-
-        UIImage *goodImg = [UIImage imageNamed: self.maxImage];
         [goodImg drawInRect:CGRectMake([self centerX] + self.bgRadius - (goodImg.size.width * scaleFactor), [self centerY] - goodImg.size.height * scaleFactor, goodImg.size.width * scaleFactor, goodImg.size.height * scaleFactor)];
     }
 }
@@ -82,7 +91,7 @@ static const CGFloat CUTOFF = 0.5;
     CGFloat fontSize = self.bounds.size.width/18;
     UIFont* font = [UIFont fontWithName:@"Arial" size:fontSize];
     UIColor* textColor = [self needleColor];
-
+    
     
     NSDictionary* stringAttrs = @{ NSFontAttributeName : font, NSForegroundColorAttributeName : textColor };
     
@@ -123,10 +132,45 @@ static const CGFloat CUTOFF = 0.5;
     CGFloat innerRadius = self.bgRadius - (self.bgRadius * 0.3);
     [bgPathInner addArcWithCenter:[self center] radius:innerRadius startAngle:starttime endAngle:endtime clockwise:YES];
     [bgPathInner addLineToPoint:[self center]];
-
+    
     self.backgroundColor ? [self.backgroundColor set] : [[UIColor whiteColor] set];
     [bgPathInner stroke];
     [bgPathInner fill];
+}
+
+- (UIImage *)imageNamed:(NSString *)name withColor:(UIColor *)color drawAsOverlay:(BOOL)overlay{
+    // load the image
+    UIImage *img = [UIImage imageNamed:name];
+    
+    // begin a new image context, to draw our colored image onto
+    UIGraphicsBeginImageContextWithOptions(img.size, NO, [[UIScreen mainScreen] scale]);
+    
+    // get a reference to that context we created
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // set the fill color
+    [color setFill];
+    
+    // translate/flip the graphics context (for transforming from CG* coords to UI* coords
+    CGContextTranslateCTM(context, 0, img.size.height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+    // set the blend mode to overlay, and the original image
+    CGContextSetBlendMode(context, kCGBlendModeOverlay);
+    CGRect rect = CGRectMake(0, 0, img.size.width, img.size.height);
+    if(overlay) CGContextDrawImage(context, rect, img.CGImage);
+    
+    // set a mask that matches the shape of the image, then draw (overlay) a colored rectangle
+    CGContextClipToMask(context, rect, img.CGImage);
+    CGContextAddRect(context, rect);
+    CGContextDrawPath(context,kCGPathFill);
+    
+    // generate a new UIImage from the graphics context we drew onto
+    UIImage *coloredImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    //return the color-burned image
+    return coloredImg;
 }
 
 - (void) drawNeedle
@@ -137,7 +181,7 @@ static const CGFloat CUTOFF = 0.5;
     CGFloat topSpace = (distance * 0.1)/6;
     
     CGPoint center = [self center];
-
+    
     CGPoint topPoint = CGPointMake([self center].x, [self center].y - distance);
     CGPoint topPoint1 = CGPointMake([self center].x - topSpace, [self center].y - distance + (distance * 0.1));
     CGPoint topPoint2 = CGPointMake([self center].x + topSpace, [self center].y - distance + (distance * 0.1));
@@ -190,7 +234,7 @@ static const CGFloat CUTOFF = 0.5;
     
     if (gesture.state == UIGestureRecognizerStateChanged)
     {
-//        NSLog (@"[%f,%f]",currentPosition.x, currentPosition.y);
+        //        NSLog (@"[%f,%f]",currentPosition.x, currentPosition.y);
         self.currentRadian = [self calculateRadian:currentPosition];
         [self setNeedsDisplay];
         [self currentLevel];
@@ -237,8 +281,8 @@ static const CGFloat CUTOFF = 0.5;
     if (result > (M_PI_2 - CUTOFF) || result < (-M_PI_2 + CUTOFF)) {
         return self.currentRadian;
     }
-        
-//    NSLog(@"Calculated Angle: %f", result);
+    
+    //    NSLog(@"Calculated Angle: %f", result);
     
     return result;
 }
@@ -267,7 +311,7 @@ static const CGFloat CUTOFF = 0.5;
         currentSection += levelSection;
     }
     
-//    NSLog(@"Current Level is %lu", (unsigned long)level);
+    //    NSLog(@"Current Level is %lu", (unsigned long)level);
     if (self.oldLevel != level && self.delegate && [self.delegate respondsToSelector:@selector(sfGaugeView:didChangeLevel:)]) {
         [self.delegate sfGaugeView:self didChangeLevel:level];
     }
@@ -279,7 +323,7 @@ static const CGFloat CUTOFF = 0.5;
 - (void) setCurrentLevel:(NSInteger)currentLevel
 {
     if (currentLevel >= 0 && currentLevel <= self.maxlevel) {
- 
+        
         self.oldLevel = currentLevel;
         
         CGFloat range = M_PI - (CUTOFF * 2);
@@ -289,7 +333,7 @@ static const CGFloat CUTOFF = 0.5;
             self.currentRadian = 0.f;
         }
         
-//        NSLog(@"Current Radian is %f", self.currentRadian);
+        //        NSLog(@"Current Radian is %f", self.currentRadian);
         [self setNeedsDisplay];
     }
 }

@@ -37,6 +37,7 @@ Usage
         minImage = An image for min level (see screenshot)
         maxImage = An image for max level (see screenshot)
         currentLevel = Sets the current Level
+        autoAdjustImageColors = Overlays the images with bgColor (default: NO)
 
 4. GaugeControl interaction
         currentLevel = Returns the current level
