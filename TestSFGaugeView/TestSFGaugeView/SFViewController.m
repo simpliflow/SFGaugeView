@@ -43,7 +43,7 @@
     self.topTachometer.hideLevel = YES;
     self.topTachometer.minImage = @"minImage";
     self.topTachometer.maxImage = @"maxImage";
-    self.topTachometer.adjustImageColors = YES;
+    self.topTachometer.autoAdjustImageColors = YES;
     
 
     self.middleTachometer.bgColor = [UIColor colorWithRed:102/255.0 green:175/255.0 blue:102/255.0 alpha:1];
