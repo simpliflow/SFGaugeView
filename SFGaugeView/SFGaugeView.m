@@ -72,8 +72,8 @@ static const CGFloat CUTOFF = 0.5;
         UIImage *goodImg;
         
         if (self.autoAdjustImageColors) {
-            badImg = [self imageNamed:self.minImage withColor:self.bgColor drawAsOverlay:NO];
-            goodImg = [self imageNamed:self.maxImage withColor:self.bgColor drawAsOverlay:NO];
+            badImg = [self imageNamed:self.minImage withColor:self.needleColor drawAsOverlay:NO];
+            goodImg = [self imageNamed:self.maxImage withColor:self.needleColor drawAsOverlay:NO];
         } else {
             badImg = [UIImage imageNamed:self.minImage];
             goodImg = [UIImage imageNamed: self.maxImage];
