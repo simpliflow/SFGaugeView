@@ -259,14 +259,7 @@ static const CGFloat CUTOFF = 0.5;
     if (pos.y > [self center].y) {
         return self.currentRadian;
     }
-    
-    CGFloat threshold = self.bounds.size.width * 0.2;
-    if (pos.x <= threshold) {
-        return -(M_PI_2 - CUTOFF);
-    } else if (pos.x >= (self.bounds.size.width - threshold)) {
-        return (M_PI_2 - CUTOFF);
-    }
-    
+        
     // calculate distance between pos and center
     CGFloat p12 = [self calculateDistanceFrom:pos to:[self center]];
     
@@ -282,8 +275,12 @@ static const CGFloat CUTOFF = 0.5;
         result = -result;
     }
     
-    if (result > (M_PI_2 - CUTOFF) || result < (-M_PI_2 + CUTOFF)) {
-        return self.currentRadian;
+    if (result > (M_PI_2 - CUTOFF)) {
+        return M_PI_2 - CUTOFF;
+    }
+    
+    if (result < (-M_PI_2 + CUTOFF)) {
+        return -M_PI_2 + CUTOFF;
     }
     
 //    NSLog(@"Calculated Angle: %f", result);
