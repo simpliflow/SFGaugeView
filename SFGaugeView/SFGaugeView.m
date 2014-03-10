@@ -312,6 +312,10 @@ static const CGFloat CUTOFF = 0.5;
         currentSection += levelSection;
     }
     
+    if (level == 0) {
+        level = self.maxlevel;
+    }
+
     //    NSLog(@"Current Level is %lu", (unsigned long)level);
     if (self.oldLevel != level && self.delegate && [self.delegate respondsToSelector:@selector(sfGaugeView:didChangeLevel:)]) {
         [self.delegate sfGaugeView:self didChangeLevel:level];
