@@ -14,10 +14,12 @@
 @property(nonatomic) CGFloat bgRadius;
 @property(nonatomic) CGFloat currentRadian;
 @property(nonatomic) NSInteger oldLevel;
-
+@property(nonatomic, readonly) NSUInteger scale;
 @end
 
 @implementation SFGaugeView
+
+@synthesize minlevel = _minlevel;
 
 static const CGFloat CUTOFF = 0.5;
 
@@ -299,23 +301,26 @@ static const CGFloat CUTOFF = 0.5;
 # pragma mark current level
 - (NSInteger) currentLevel
 {
-    NSInteger level = 0;
+    NSInteger level = -1;
     
-    CGFloat levelSection = (M_PI - (CUTOFF * 2)) / self.maxlevel;
+    CGFloat levelSection = (M_PI - (CUTOFF * 2)) / self.scale;
     CGFloat currentSection = -M_PI_2 + CUTOFF;
     
-    for (int i=1; i<=self.maxlevel;i++) {
-        if (self.currentRadian >= currentSection && self.currentRadian <= (currentSection + levelSection)) {
+    for (int i=1; i<=self.scale;i++) {
+//        NSLog(@"[%fl, %fl] = %fl", currentSection, (currentSection + levelSection), self.currentRadian);
+        if (self.currentRadian >= currentSection && self.currentRadian < (currentSection + levelSection)) {
             level = i;
             break;
         }
         currentSection += levelSection;
     }
     
-    if (level == 0) {
-        level = self.maxlevel;
+    if (self.currentRadian >= (M_PI_2 - CUTOFF)) {
+        level = self.scale + 1;
     }
-
+    
+    level = level + self.minlevel - 1;
+    
     //    NSLog(@"Current Level is %lu", (unsigned long)level);
     if (self.oldLevel != level && self.delegate && [self.delegate respondsToSelector:@selector(sfGaugeView:didChangeLevel:)]) {
         [self.delegate sfGaugeView:self didChangeLevel:level];
@@ -327,13 +332,13 @@ static const CGFloat CUTOFF = 0.5;
 
 - (void) setCurrentLevel:(NSInteger)currentLevel
 {
-    if (currentLevel >= 0 && currentLevel <= self.maxlevel) {
+    if (currentLevel >= self.minlevel && currentLevel <= self.maxlevel) {
         
         self.oldLevel = currentLevel;
         
         CGFloat range = M_PI - (CUTOFF * 2);
-        if (currentLevel != self.maxlevel/2) {
-            self.currentRadian = (currentLevel * range)/self.maxlevel - (range/2);
+        if (currentLevel != self.scale/2) {
+            self.currentRadian = (currentLevel * range)/self.scale - (range/2);
         } else {
             self.currentRadian = 0.f;
         }
@@ -358,7 +363,7 @@ static const CGFloat CUTOFF = 0.5;
 - (CGFloat)centerX
 {
     return self.bounds.size.width/2;
-}
+}   
 
 - (UIColor *) needleColor
 {
@@ -396,6 +401,11 @@ static const CGFloat CUTOFF = 0.5;
     return _maxlevel;
 }
 
+- (void)setMinlevel:(NSUInteger)minlevel
+{
+    _minlevel = minlevel;
+}
+
 - (CGFloat) bgRadius
 {
     if (!_bgRadius) {
@@ -403,6 +413,10 @@ static const CGFloat CUTOFF = 0.5;
     }
     
     return _bgRadius;
+}
+
+- (NSUInteger)scale {
+    return self.maxlevel - self.minlevel;
 }
 
 @end

@@ -30,7 +30,8 @@ Usage
 2. Create an outlet (if create via storyboard)
 3. Set up parameters
 
-        maxLevel = The maximum level of gauge control (int value)
+        maxlevel = The maximum level of gauge control (unsigned int value)
+        minlevel = The minimum level of gauge control (unsigned int value)
         needleColor = Color of needle
         bgColor = Background Color of gauge control
         hideLevel = If set to YES the current level is hidden

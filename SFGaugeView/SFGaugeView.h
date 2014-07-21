@@ -19,6 +19,7 @@
 @interface SFGaugeView : UIView
 
 @property (nonatomic) NSUInteger maxlevel;
+@property (nonatomic) NSUInteger minlevel;
 @property (nonatomic) UIColor *needleColor;
 @property (nonatomic) UIColor *bgColor;
 @property (nonatomic) BOOL hideLevel;
