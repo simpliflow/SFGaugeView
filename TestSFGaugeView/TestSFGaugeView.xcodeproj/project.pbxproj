@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06B68F62380347A692F3D831 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE04435D1E643C38E4CC999 /* libPods.a */; };
 		5F6636B818B0ADFB00F54090 /* SFViewXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6636B718B0ADFB00F54090 /* SFViewXIB.xib */; };
 		5F6636BB18B0AE3F00F54090 /* SFViewXIB.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6636BA18B0AE3F00F54090 /* SFViewXIB.m */; };
 		5FF87D4B18914D5E00A57B15 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF87D4A18914D5E00A57B15 /* Foundation.framework */; };
@@ -24,6 +23,7 @@
 		5FF87D7418914D5E00A57B15 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5FF87D7218914D5E00A57B15 /* InfoPlist.strings */; };
 		5FF87D7618914D5E00A57B15 /* TestSFGaugeViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF87D7518914D5E00A57B15 /* TestSFGaugeViewTests.m */; };
 		5FFDE76C18914E900079917F /* SFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFDE76B18914E900079917F /* SFViewController.m */; };
+		65F4552BC7B87D5352200349 /* libPods-TestSFGaugeView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CBE6580275D81EA660A2C37 /* libPods-TestSFGaugeView.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2CE9B6C862498506CA9A8FA1 /* Pods-TestSFGaugeView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSFGaugeView.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestSFGaugeView/Pods-TestSFGaugeView.release.xcconfig"; sourceTree = "<group>"; };
 		5F6636B718B0ADFB00F54090 /* SFViewXIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFViewXIB.xib; sourceTree = "<group>"; };
 		5F6636B918B0AE3F00F54090 /* SFViewXIB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFViewXIB.h; sourceTree = "<group>"; };
 		5F6636BA18B0AE3F00F54090 /* SFViewXIB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFViewXIB.m; sourceTree = "<group>"; };
@@ -59,8 +60,8 @@
 		5FF87D7518914D5E00A57B15 /* TestSFGaugeViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestSFGaugeViewTests.m; sourceTree = "<group>"; };
 		5FFDE76A18914E900079917F /* SFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFViewController.h; sourceTree = "<group>"; };
 		5FFDE76B18914E900079917F /* SFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFViewController.m; sourceTree = "<group>"; };
-		ACE04435D1E643C38E4CC999 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B4F88F8C74DD4A548B52D7EA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		7CBE6580275D81EA660A2C37 /* libPods-TestSFGaugeView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestSFGaugeView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2479A5A6D47741CA6FD3478 /* Pods-TestSFGaugeView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSFGaugeView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestSFGaugeView/Pods-TestSFGaugeView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +72,7 @@
 				5FF87D4D18914D5E00A57B15 /* CoreGraphics.framework in Frameworks */,
 				5FF87D4F18914D5E00A57B15 /* UIKit.framework in Frameworks */,
 				5FF87D4B18914D5E00A57B15 /* Foundation.framework in Frameworks */,
-				06B68F62380347A692F3D831 /* libPods.a in Frameworks */,
+				65F4552BC7B87D5352200349 /* libPods-TestSFGaugeView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +96,7 @@
 				5FF87D6F18914D5E00A57B15 /* TestSFGaugeViewTests */,
 				5FF87D4918914D5E00A57B15 /* Frameworks */,
 				5FF87D4818914D5E00A57B15 /* Products */,
-				B4F88F8C74DD4A548B52D7EA /* Pods.xcconfig */,
+				E51B6091D7032BDDE270106F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,7 +116,7 @@
 				5FF87D4C18914D5E00A57B15 /* CoreGraphics.framework */,
 				5FF87D4E18914D5E00A57B15 /* UIKit.framework */,
 				5FF87D6918914D5E00A57B15 /* XCTest.framework */,
-				ACE04435D1E643C38E4CC999 /* libPods.a */,
+				7CBE6580275D81EA660A2C37 /* libPods-TestSFGaugeView.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -166,6 +167,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E51B6091D7032BDDE270106F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C2479A5A6D47741CA6FD3478 /* Pods-TestSFGaugeView.debug.xcconfig */,
+				2CE9B6C862498506CA9A8FA1 /* Pods-TestSFGaugeView.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,11 +183,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5FF87D7918914D5E00A57B15 /* Build configuration list for PBXNativeTarget "TestSFGaugeView" */;
 			buildPhases = (
-				6633F5DC6727468BB502F7D6 /* Check Pods Manifest.lock */,
+				33998A4634E6B859D36A9B5D /* [CP] Check Pods Manifest.lock */,
 				5FF87D4318914D5E00A57B15 /* Sources */,
 				5FF87D4418914D5E00A57B15 /* Frameworks */,
 				5FF87D4518914D5E00A57B15 /* Resources */,
-				4AB38071ABBF40C6890874C4 /* Copy Pods Resources */,
+				BC08CA64E6A5D3981C2EE720 /* [CP] Embed Pods Frameworks */,
+				CA8877799049C46D8FD9EA9B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -263,34 +274,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4AB38071ABBF40C6890874C4 /* Copy Pods Resources */ = {
+		33998A4634E6B859D36A9B5D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		6633F5DC6727468BB502F7D6 /* Check Pods Manifest.lock */ = {
+		BC08CA64E6A5D3981C2EE720 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestSFGaugeView/Pods-TestSFGaugeView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA8877799049C46D8FD9EA9B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestSFGaugeView/Pods-TestSFGaugeView-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -427,7 +453,7 @@
 		};
 		5FF87D7A18914D5E00A57B15 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B4F88F8C74DD4A548B52D7EA /* Pods.xcconfig */;
+			baseConfigurationReference = C2479A5A6D47741CA6FD3478 /* Pods-TestSFGaugeView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -446,7 +472,7 @@
 		};
 		5FF87D7B18914D5E00A57B15 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B4F88F8C74DD4A548B52D7EA /* Pods.xcconfig */;
+			baseConfigurationReference = 2CE9B6C862498506CA9A8FA1 /* Pods-TestSFGaugeView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
