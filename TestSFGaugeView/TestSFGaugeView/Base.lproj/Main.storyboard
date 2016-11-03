@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,27 +19,37 @@
                         <viewControllerLayoutGuide type="bottom" id="0sJ-fR-KYZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tDB-UN-q4r" customClass="SFGaugeView">
-                                <rect key="frame" x="20" y="233" width="280" height="181"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NnJ-S2-3IE" customClass="SFGaugeView">
+                                <rect key="frame" x="10" y="28" width="394" height="229"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NnJ-S2-3IE" customClass="SFGaugeView">
-                                <rect key="frame" x="20" y="44" width="280" height="181"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDB-UN-q4r" customClass="SFGaugeView">
+                                <rect key="frame" x="10" y="265" width="394" height="228.33333333333329"/>
+                                <color key="backgroundColor" red="0.66762857434347289" green="0.44470993636116496" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0I1-v2-0WF" customClass="SFGaugeView">
-                                <rect key="frame" x="20" y="438" width="130" height="110"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NlE-FV-j0c" customClass="SFGaugeView">
-                                <rect key="frame" x="170" y="438" width="130" height="110"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0I1-v2-0WF" customClass="SFGaugeView">
+                                <rect key="frame" x="10" y="499" width="394" height="228.66666666666674"/>
+                                <color key="backgroundColor" red="1" green="0.51606260886789213" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0I1-v2-0WF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="2ss-B2-ICl"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="0I1-v2-0WF" secondAttribute="bottom" constant="8.3333333333332575" id="B8q-KH-3AH"/>
+                            <constraint firstItem="tDB-UN-q4r" firstAttribute="top" secondItem="NnJ-S2-3IE" secondAttribute="bottom" constant="8" id="L6r-ZT-40S"/>
+                            <constraint firstItem="NnJ-S2-3IE" firstAttribute="top" secondItem="Sk1-1B-SjV" secondAttribute="bottom" constant="8" id="LeD-MV-jcQ"/>
+                            <constraint firstAttribute="trailing" secondItem="0I1-v2-0WF" secondAttribute="trailing" constant="10" id="Qwy-9r-OBB"/>
+                            <constraint firstItem="NnJ-S2-3IE" firstAttribute="height" secondItem="0I1-v2-0WF" secondAttribute="height" id="YMr-yO-4Rs"/>
+                            <constraint firstItem="tDB-UN-q4r" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="f4x-B2-Ueb"/>
+                            <constraint firstItem="NnJ-S2-3IE" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="mS1-Au-MI4"/>
+                            <constraint firstItem="0I1-v2-0WF" firstAttribute="top" secondItem="tDB-UN-q4r" secondAttribute="bottom" constant="5.6666666666667425" id="oxZ-ch-GIT"/>
+                            <constraint firstAttribute="trailing" secondItem="tDB-UN-q4r" secondAttribute="trailing" constant="10" id="pXg-ra-6Dj"/>
+                            <constraint firstItem="NnJ-S2-3IE" firstAttribute="height" secondItem="tDB-UN-q4r" secondAttribute="height" id="qRV-hF-gGI"/>
+                            <constraint firstAttribute="trailing" secondItem="NnJ-S2-3IE" secondAttribute="trailing" constant="10" id="zQr-Ps-sjM"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="leftTachometer" destination="0I1-v2-0WF" id="Vaf-c4-tQv"/>
@@ -43,11 +59,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="33.5" y="17.5"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination" type="retina5_5.fullscreen"/>
     </simulatedMetricsContainer>
 </document>
