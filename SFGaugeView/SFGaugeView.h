@@ -26,6 +26,13 @@
 @property (nonatomic) NSString *minImage;
 @property (nonatomic) NSString *maxImage;
 @property (nonatomic) BOOL autoAdjustImageColors;
+@property (nonatomic, readwrite) CGFloat needleRadius;
+@property (nonatomic) CGFloat firstPercentage;
+@property (nonatomic) CGFloat secondPercentage;
+@property (nonatomic) UIColor *firstSectionColor;
+@property (nonatomic) UIColor *secondSectionColor;
+@property (nonatomic) UIColor *thirdSectionColor;
+
 
 @property (nonatomic) NSInteger currentLevel;
 

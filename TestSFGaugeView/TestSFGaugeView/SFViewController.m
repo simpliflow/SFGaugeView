@@ -13,9 +13,7 @@
 
 @interface SFViewController ()
 
-@property (weak, nonatomic) IBOutlet SFGaugeView *topTachometer;
-@property (weak, nonatomic) IBOutlet SFGaugeView *middleTachometer;
-@property (weak, nonatomic) IBOutlet SFGaugeView *leftTachometer;
+@property (weak, nonatomic) IBOutlet SFGaugeView *gaugeSample;
 
 @end
 
@@ -38,27 +36,31 @@
 //    view.frame = self.view.frame;
 //    [self.view addSubview:view];
     
-    self.topTachometer.bgColor = [UIColor colorWithRed:0/255.0 green:124/255.0 blue:205/255.0 alpha:1];
-    self.topTachometer.needleColor = [UIColor colorWithRed:0/255.0 green:39/255.0 blue:64/255.0 alpha:1];
-    self.topTachometer.hideLevel = YES;
-    self.topTachometer.minImage = @"minImage";
-    self.topTachometer.maxImage = @"maxImage";
-    self.topTachometer.autoAdjustImageColors = YES;
+//    self.gaugeSample.bgColor = [UIColor colorWithRed:0/255.0 green:124/255.0 blue:205/255.0 alpha:1];
+//    self.gaugeSample.needleColor = [UIColor colorWithRed:0/255.0 green:39/255.0 blue:64/255.0 alpha:1];
+//    self.gaugeSample.hideLevel = YES;
+//    self.gaugeSample.minImage = @"minImage";
+//    self.gaugeSample.maxImage = @"maxImage";
+//    self.gaugeSample.autoAdjustImageColors = YES;
     
+    ///-Uncomment to see custom values
+    self.gaugeSample.bgColor = [UIColor colorWithRed:102/255.0 green:175/255.0 blue:102/255.0 alpha:1];
+    self.gaugeSample.needleColor = [UIColor colorWithRed:27/255.0 green:103/255.0 blue:107/255.0 alpha:1];
+    self.gaugeSample.maxlevel = 10;
+    self.gaugeSample.minlevel = 1;
+    self.gaugeSample.needleRadius = 8.2;
+//    self.gaugeSample.firstPercentage = 0.30;
+//    self.gaugeSample.secondPercentage = 0.70;
+    self.gaugeSample.currentLevel = 2;
+    self.gaugeSample.autoAdjustImageColors = NO;
+    self.gaugeSample.delegate = self;
 
-    self.middleTachometer.bgColor = [UIColor colorWithRed:102/255.0 green:175/255.0 blue:102/255.0 alpha:1];
-    self.middleTachometer.needleColor = [UIColor colorWithRed:27/255.0 green:103/255.0 blue:107/255.0 alpha:1];
-    self.middleTachometer.maxlevel = 10;
-    self.middleTachometer.minlevel = 1;
-    self.middleTachometer.minImage = @"minImage";
-    self.middleTachometer.maxImage = @"maxImage";
-    self.middleTachometer.currentLevel = 2;
-    self.middleTachometer.delegate = self;
-
-    self.leftTachometer.maxlevel = 8;
-    self.leftTachometer.minlevel = 0;
-    self.leftTachometer.bgColor = [UIColor colorWithRed:249/255.0 green:203/255.0 blue:0/255.0 alpha:1];
-    self.leftTachometer.needleColor = [UIColor colorWithRed:247/255.0 green:164/255.0 blue:2/255.0 alpha:1];
+    ///-Uncomment to see custom values
+//    self.gaugeSample.maxlevel = 8;
+//    self.gaugeSample.minlevel = 0;
+//    self.gaugeSample.bgColor = [UIColor colorWithRed:249/255.0 green:203/255.0 blue:0/255.0 alpha:1];
+//    self.gaugeSample.needleColor = [UIColor colorWithRed:247/255.0 green:164/255.0 blue:2/255.0 alpha:1];
+//    self.gaugeSample.needleRadius = 8;
     
 }
 
