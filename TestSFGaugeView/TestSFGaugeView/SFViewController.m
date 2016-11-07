@@ -47,11 +47,9 @@
     self.gaugeSample.bgColor = [UIColor colorWithRed:102/255.0 green:175/255.0 blue:102/255.0 alpha:1];
     self.gaugeSample.needleColor = [UIColor colorWithRed:27/255.0 green:103/255.0 blue:107/255.0 alpha:1];
     self.gaugeSample.maxlevel = 10;
-    self.gaugeSample.minlevel = 1;
+    self.gaugeSample.minlevel = 0;
     self.gaugeSample.needleRadius = 8.2;
-//    self.gaugeSample.firstPercentage = 0.30;
-//    self.gaugeSample.secondPercentage = 0.70;
-    self.gaugeSample.currentLevel = 2;
+    self.gaugeSample.currentLevel = 5;
     self.gaugeSample.autoAdjustImageColors = NO;
     self.gaugeSample.delegate = self;
 

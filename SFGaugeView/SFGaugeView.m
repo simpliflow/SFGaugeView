@@ -467,7 +467,7 @@ static const CGFloat gaugeInnerLengthDelta = 0.43;
 - (CGFloat) backgroundCircleRadius
 {
     if (!_backgroundCircleRadius) {
-        _backgroundCircleRadius = [self centerX] - ([self centerX] * 0.1);
+        _backgroundCircleRadius = [self centerX] - ([self centerX] * 0.2);
     }
     
     return _backgroundCircleRadius;
