@@ -10,8 +10,7 @@
 
 @interface SFGaugeView()
 
-@property(nonatomic) CGFloat needleRadius;
-@property(nonatomic) CGFloat bgRadius;
+@property(nonatomic) CGFloat backgroundCircleRadius;
 @property(nonatomic) CGFloat currentRadian;
 @property(nonatomic) NSInteger oldLevel;
 @property(nonatomic, readonly) NSUInteger scale;
@@ -21,7 +20,10 @@
 
 @synthesize minlevel = _minlevel;
 
-static const CGFloat CUTOFF = 0.5;
+static const CGFloat CUTOFF = 0;
+static const CGFloat needleThicknessDelta = 0.04;
+static const CGFloat gaugeInnerLengthDelta = 0.43;
+
 
 #pragma mark init stuff
 
@@ -60,9 +62,8 @@ static const CGFloat CUTOFF = 0.5;
 
 - (void)drawRect:(CGRect)rect
 {
-    [self drawBg];
+    [self drawBackgroundCircle];
     [self drawNeedle];
-    [self drawLabels];
     [self drawImageLabels];
 }
 
@@ -83,8 +84,8 @@ static const CGFloat CUTOFF = 0.5;
         
         CGFloat scaleFactor = (self.bounds.size.width / badImg.size.width)/6 ;
         
-        [badImg drawInRect:CGRectMake([self centerX] - self.bgRadius, [self centerY] - badImg.size.height * scaleFactor, badImg.size.width * scaleFactor, badImg.size.height * scaleFactor)];
-        [goodImg drawInRect:CGRectMake([self centerX] + self.bgRadius - (goodImg.size.width * scaleFactor), [self centerY] - goodImg.size.height * scaleFactor, goodImg.size.width * scaleFactor, goodImg.size.height * scaleFactor)];
+        [badImg drawInRect:CGRectMake([self centerX] - self.backgroundCircleRadius, [self centerY] - badImg.size.height * scaleFactor, badImg.size.width * scaleFactor, badImg.size.height * scaleFactor)];
+        [goodImg drawInRect:CGRectMake([self centerX] + self.backgroundCircleRadius - (goodImg.size.width * scaleFactor), [self centerY] - goodImg.size.height * scaleFactor, goodImg.size.width * scaleFactor, goodImg.size.height * scaleFactor)];
     }
 }
 
@@ -110,38 +111,50 @@ static const CGFloat CUTOFF = 0.5;
     }
 }
 
-- (void) drawBg
+- (void) drawBackgroundCircle
 {
-    CGFloat starttime = M_PI + CUTOFF;
-    CGFloat endtime = 2 * M_PI - CUTOFF;
+    //Calculate all angles to be used in radians
+    CGFloat startAngle = M_PI + CUTOFF;
+    CGFloat endAngle = 2 * M_PI - CUTOFF;
+    CGFloat firstSectionAngle = ((endAngle - startAngle) * self.firstPercentage) + startAngle;
+    CGFloat secondSectionAngle = ((endAngle - startAngle) * self.secondPercentage) + startAngle;
     
-    CGFloat bgEndAngle = (3 * M_PI_2) + self.currentRadian;
+    //Draw sections
+    UIBezierPath *firstSectionPath = [UIBezierPath bezierPath];
+    [firstSectionPath moveToPoint: [self center]];
+    [firstSectionPath addArcWithCenter: [self center] radius: self.backgroundCircleRadius startAngle: startAngle
+                              endAngle: firstSectionAngle clockwise: YES];
+    [firstSectionPath addLineToPoint: [self center]];
+    [self.firstSectionColor set];
+    [firstSectionPath fill];
     
-    if (bgEndAngle > starttime) {
-        UIBezierPath *bgPath = [UIBezierPath bezierPath];
-        [bgPath moveToPoint:[self center]];
-        [bgPath addArcWithCenter:[self center] radius:self.bgRadius startAngle:starttime endAngle: (3 * M_PI_2) + self.currentRadian clockwise:YES];
-        [bgPath addLineToPoint:[self center]];
-        [[self bgColor] set];
-        [bgPath fill];
-    }
+    UIBezierPath *secondSectionPath = [UIBezierPath bezierPath];
+    [secondSectionPath moveToPoint: [self center]];
+    [secondSectionPath addArcWithCenter: [self center] radius: self.backgroundCircleRadius startAngle: firstSectionAngle
+                               endAngle: secondSectionAngle clockwise: YES];
+    [secondSectionPath addLineToPoint: [self center]];
+    [self.secondSectionColor set];
+    [secondSectionPath fill];
     
-    UIBezierPath *bgPath2 = [UIBezierPath bezierPath];
-    [bgPath2 moveToPoint:[self center]];
-    [bgPath2 addArcWithCenter:[self center] radius:self.bgRadius startAngle:(3 * M_PI_2) + self.currentRadian endAngle:endtime clockwise:YES];
-    [[self lighterColorForColor:[self bgColor]] set];
-    [bgPath2 fill];
+    UIBezierPath *thirdSectionPath = [UIBezierPath bezierPath];
+    [thirdSectionPath moveToPoint: [self center]];
+    [thirdSectionPath addArcWithCenter: [self center] radius: self.backgroundCircleRadius startAngle: secondSectionAngle
+                              endAngle: endAngle clockwise: YES];
+    [self.thirdSectionColor set];
+    [thirdSectionPath fill];
     
-    UIBezierPath *bgPathInner = [UIBezierPath bezierPath];
-    [bgPathInner moveToPoint:[self center]];
+    //Draw inner-halved circle
+    UIBezierPath *innerPath = [UIBezierPath bezierPath];
+    [innerPath moveToPoint: [self center]];
     
-    CGFloat innerRadius = self.bgRadius - (self.bgRadius * 0.3);
-    [bgPathInner addArcWithCenter:[self center] radius:innerRadius startAngle:starttime endAngle:endtime clockwise:YES];
-    [bgPathInner addLineToPoint:[self center]];
+    CGFloat innerRadius = self.backgroundCircleRadius - (self.backgroundCircleRadius * gaugeInnerLengthDelta);
+    [innerPath addArcWithCenter: [self center] radius: innerRadius startAngle: startAngle
+                       endAngle: endAngle clockwise: YES];
+    [innerPath addLineToPoint: [self center]];
     
-    self.backgroundColor ? [self.backgroundColor set] : [[UIColor whiteColor] set];
-    [bgPathInner stroke];
-    [bgPathInner fill];
+    self.backgroundColor ? [self.backgroundColor set] : [[UIColor clearColor] set];
+    [innerPath stroke];
+    [innerPath fill];
 }
 
 - (UIImage *)imageNamed:(NSString *)name withColor:(UIColor *)color drawAsOverlay:(BOOL)overlay{
@@ -181,7 +194,7 @@ static const CGFloat CUTOFF = 0.5;
 
 - (void) drawNeedle
 {
-    CGFloat distance = [self bgRadius] + ([self bgRadius] * 0.1);
+    CGFloat distance = [self backgroundCircleRadius] + ([self backgroundCircleRadius] * 0.1);
     CGFloat starttime = 0;
     CGFloat endtime = M_PI;
     CGFloat topSpace = (distance * 0.1)/6;
@@ -386,10 +399,55 @@ static const CGFloat CUTOFF = 0.5;
 - (CGFloat) needleRadius
 {
     if (!_needleRadius) {
-        _needleRadius = self.bounds.size.height * 0.08;
+        _needleRadius = self.bounds.size.height * needleThicknessDelta;
     }
     
     return _needleRadius;
+}
+
+- (UIColor *)firstSectionColor
+{
+    if (!_firstSectionColor) {
+        _firstSectionColor = [UIColor colorWithRed: 236/255.0 green: 117/255.0 blue: 98/255.0 alpha:1];
+    }
+    
+    return _firstSectionColor;
+}
+
+- (UIColor *)secondSectionColor
+{
+    if (!_secondSectionColor) {
+        _secondSectionColor = [UIColor colorWithRed: 254/255.0 green: 220/255.0 blue: 108/255.0 alpha:1];
+    }
+    
+    return _secondSectionColor;
+}
+
+- (UIColor *)thirdSectionColor
+{
+    if (!_thirdSectionColor) {
+        _thirdSectionColor = [UIColor colorWithRed: 114/255.0 green: 207/255.0 blue: 142/255.0 alpha:1];
+    }
+    
+    return _thirdSectionColor;
+}
+
+- (CGFloat)firstPercentage
+{
+    if (!_firstPercentage) {
+        _firstPercentage = 0.50;
+    }
+    
+    return _firstPercentage;
+}
+
+- (CGFloat)secondPercentage
+{
+    if (!_secondPercentage) {
+        _secondPercentage = 0.90;
+    }
+    
+    return _secondPercentage;
 }
 
 - (NSUInteger) maxlevel
@@ -406,13 +464,13 @@ static const CGFloat CUTOFF = 0.5;
     _minlevel = minlevel;
 }
 
-- (CGFloat) bgRadius
+- (CGFloat) backgroundCircleRadius
 {
-    if (!_bgRadius) {
-        _bgRadius = [self centerX] - ([self centerX] * 0.1);
+    if (!_backgroundCircleRadius) {
+        _backgroundCircleRadius = [self centerX] - ([self centerX] * 0.2);
     }
     
-    return _bgRadius;
+    return _backgroundCircleRadius;
 }
 
 - (NSUInteger)scale {
